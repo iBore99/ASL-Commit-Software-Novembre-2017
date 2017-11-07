@@ -6,15 +6,18 @@
 
         <div id ="app">
 
+
             <button v-on:click = "leftMove()">Left</button>
             <button v-on:click = "rightMove()">Right</button>
-
-            <div v-for = "elem in elements">
-                {{elem }}
+            <div>
+            <span v-for = "elem in elements">
+                {{elem}}
+            </span>
             </div>
         </div>
 
         <script>
+            
         var app = new Vue({
             el: '#app',  
 
@@ -32,9 +35,17 @@
                 {
                     if (this.indice != 0)
                     {
-                        this.elements[this.indice] = '0';
-                        this.elements[this.indice-1] = '1';
-                        this.indice --; 
+                        Vue.set(this.elements, this.indice, '0');
+                        Vue.set(this.elements, --this.indice, '1');
+                    }
+                  },
+
+                rightMove: function() 
+                {
+                    if (this.indice != this.elements.length-1)
+                    {
+                        Vue.set(this.elements, this.indice, '0');
+                        Vue.set(this.elements, ++this.indice, '1');
                     }
                   }
                
