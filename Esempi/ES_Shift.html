@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <script src = "../vue.js"></script>
+    </head>
+    <body>
+
+        <div id ="app">
+
+            <button v-on:click = "leftMove()">Left</button>
+            <button v-on:click = "rightMove()">Right</button>
+
+            <div v-for = "elem in elements">
+                {{elem }}
+            </div>
+        </div>
+
+        <script>
+        var app = new Vue({
+            el: '#app',  
+
+            data: 
+            {
+                indice: 3,
+                elements: [ 
+                    '0', '0', '0','1', '0', '0', '0'
+                    //'0','0','1','0', '0', '0', '0'
+                ]
+            },
+
+            methods: {
+                leftMove: function() 
+                {
+                    if (this.indice != 0)
+                    {
+                        this.elements[this.indice] = '0';
+                        this.elements[this.indice-1] = '1';
+                        this.indice --; 
+                    }
+                  }
+               
+
+            }
+
+            
+
+        })
+
+        </Script>
+    </body>
+</html>
