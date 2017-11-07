@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <script src="../../vue.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+
+    <div id="app">
+
+        <label>Prodotto: </label>
+        <input type="text" v-on:keyup.enter="logProdotto() , aggiungiProdotto()" v-model="prodotto"></input>
+        <ol>
+            <!-- ordered list-->
+
+
+            <li v-for="prodotto in lista_spesa">
+                {{prodotto}}
+            </li>
+        </ol>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>

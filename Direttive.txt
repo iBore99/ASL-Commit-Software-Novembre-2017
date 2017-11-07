@@ -1,0 +1,5 @@
+v-model 	//Serve per fare il binding in una form.
+v-on:event	//Serve per fare eseguire qualcosa dopo un evento
+v-bind:prop 	//Serve per applicare il binding ad una proprietà
+v-for = "elem in elements"	//Serve per iterare su un array
+

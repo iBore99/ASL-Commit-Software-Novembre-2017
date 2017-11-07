@@ -1,0 +1,17 @@
+<html>
+
+<head>
+    <script src="../../vue.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input v-model="testo" type="text" v-bind:value="testo" v-on:keyup="calcLettere()"></input>
+        <p>Numero lettere: {{num_lettere}}</p>
+    </div>
+
+</body>
+
+</html>
