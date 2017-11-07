@@ -8,8 +8,8 @@
 <body>
 
     <div id="app">
-        <input v-model="testo" type="text" v-bind:value="testo" v-on:keyup="calcLettere()"></input>
-        <p>Numero lettere: {{num_lettere}}</p>
+        <input v-model="testo" type="text"></input>
+        <p>Numero lettere: {{testo.length}}</p>
     </div>
 
 </body>

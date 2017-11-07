@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <script src="../../vue.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <div id='app'>
+        <label style="margin-right:10px;">Inserisci la tua eta': </label>
+        <input type='number' v-model="eta" /> {{isMaggiorenne}}
+
+        <div v-show="isMaggiorenne">
+            <p>Meraviglioso! Visto che sei maggiorenne, hai il DIRITTO ed il DOVERE di visitare questo splendido sito...</p>
+            <a v-bind:href="sitoPorno"> CLICCAMI, TI COVIENE. </a>
+        </div>
+        <div v-show="!isMaggiorenne">
+            <p>Sei minorenne! Non puoi andare oltre.</p>
+        </div>
+
+</body>
+
+</html>
