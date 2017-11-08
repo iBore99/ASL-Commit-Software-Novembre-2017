@@ -9,7 +9,6 @@ window.onload = function() {
         },
         computed: {
             isMaggiorenne: function() {
-                console.log(this.eta >= 18);
                 return this.eta >= 18
             }
         }
