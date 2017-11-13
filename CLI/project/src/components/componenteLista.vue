@@ -3,7 +3,7 @@
     <div>
         <!--Form per aggiunta prodotto alla lista -->
         <div id = "idAggiuntaProdotto">
-            <label style = "display: block; margin-bottom: 10px;">Aggiungi prodotti alla lista: </label>
+            <label>Aggiungi prodotti alla lista: </label>
 
             <input v-on:keyup.enter = "aggiuntaProdotto()" type ="text" v-model = "nuovoProdotto"/>
             <input v-on:click= "aggiuntaProdotto()" type = "submit" value = "Aggiungi"/>
@@ -96,6 +96,11 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+    #idAggiuntaProdotto label{
+        display: block; 
+        margin-bottom: 10px;
+    }
     .prodottoPreso-true{
         text-decoration: line-through;
         color:grey;
