@@ -1,21 +1,21 @@
 <template>
   <div>
     <h1>{{title}}</h1>
-    <pComp/>
+    <cLista/>
   </div>
 
 </template>
 
 <script>
-  import provaComponent from "./components/provaComponent.vue"
+  import componenteLista from "./components/componenteLista.vue"
   
   export default{
     components: {
-      'pComp': provaComponent
+      'cLista': componenteLista
     },
     data(){
       return {
-        title: 'Prima app'
+        title: 'Lista della spesa'
       }
     }
   }

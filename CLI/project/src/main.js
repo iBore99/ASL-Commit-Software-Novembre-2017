@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 
 Vue.config.productionTip = false
-
+require('../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss')
 
 /* eslint-disable no-new */
 new Vue({
