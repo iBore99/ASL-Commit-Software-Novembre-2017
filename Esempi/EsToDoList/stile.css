@@ -3,7 +3,14 @@
     color: grey;
 }
 
+.container {
+    padding-top: 30px;
+}
+
 div#app {
+    padding: 15px;
+    border-radius: 20px;
+    background-color: rgba(200, 207, 211, 0.212);
     display: table;
     margin: 0 auto;
 }
@@ -19,6 +26,10 @@ li:nth-child(even) {
 .testoProdotto {
     max-width: 245px;
     word-break: break-all;
+}
+
+h1 {
+    text-align: center;
 }
 
 li {
@@ -53,5 +64,9 @@ div#idAggiuntaProdotto {
 
 div#idLista {
     margin-top: 35px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+}
+
+div#idEliminazione {
+    margin-top: 25px;
 }
