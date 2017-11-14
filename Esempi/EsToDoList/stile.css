@@ -1,0 +1,9 @@
+
+    #idAggiuntaProdotto label{
+        display: block; 
+        margin-bottom: 10px;
+    }
+    .prodottoPreso-true{
+        text-decoration: line-through;
+        color:grey;
+    }
