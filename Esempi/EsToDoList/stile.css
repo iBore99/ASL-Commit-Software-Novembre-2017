@@ -1,9 +1,57 @@
+.prodottoPreso-true {
+    text-decoration: line-through;
+    color: grey;
+}
 
-    #idAggiuntaProdotto label{
-        display: block; 
-        margin-bottom: 10px;
-    }
-    .prodottoPreso-true{
-        text-decoration: line-through;
-        color:grey;
-    }
+div#app {
+    display: table;
+    margin: 0 auto;
+}
+
+li:nth-last-child() {
+    border-radius: 5px;
+}
+
+li:nth-child(even) {
+    background-color: rgba(208, 222, 231, 0.644);
+}
+
+.testoProdotto {
+    max-width: 245px;
+    word-break: break-all;
+}
+
+li {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    display: block;
+    background-color: rgb(188, 210, 226);
+}
+
+ul {
+    padding-left: 0px;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+input[type=checkbox] {
+    float: right;
+}
+
+.form-control {
+    margin-right: 2px;
+    display: inline-block;
+    width: auto;
+}
+
+div#idAggiuntaProdotto {
+    margin-top: 50px;
+}
+
+div#idLista {
+    margin-top: 35px;
+    margin-bottom: 30px;
+}

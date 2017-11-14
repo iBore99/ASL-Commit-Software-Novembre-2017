@@ -1,44 +1,45 @@
 <html>
+
 <head>
-        <script src="../../vue.js"></script>
-        <script src="app.js"></script>
-        <link href="stile.css" rel="stylesheet" type="text/css">
+    <script src="../../vue.js"></script>
+    <script src="app.js"></script>
+    <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="stile.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
-        <div id= "app">
-                <!--Form per aggiunta prodotto alla lista -->
-                <div id = "idAggiuntaProdotto">
-                    <label>Aggiungi prodotti alla lista: </label>
-                    <input v-on:keyup.enter = "aggiuntaProdotto()" type ="text" v-model = "nuovoProdotto" placeholder = "Nome del prodotto..."/>
-                    <input v-on:click= "aggiuntaProdotto()" type = "submit" value = "Aggiungi"/>
+    <div class="container">
+        <div id="app">
+            <h1>Lista della spesa</h1>
+            <!--Form per aggiunta prodotto alla lista -->
+            <div id="idAggiuntaProdotto">
+
+                <input class="form-control" v-on:keyup.enter="aggiuntaProdotto()" type="text" v-model="nuovoProdotto" placeholder="Nome del prodotto..." />
+                <input class="btn btn-primary" v-on:click="aggiuntaProdotto()" type="submit" value="Aggiungi" />
+            </div>
+
+            <!--Stampa e controllo lista della spesa-->
+
+            <div id="idLista">
+                <div v-if="listaSpesa.length == 0">Non sono presenti prodotti nella lista.</div>
+                <div v-else>
+                    <ul>
+                        <li v-for="prodotto in listaSpesa">
+
+                            <label class="testoProdotto" v-bind:class="'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
+                            <input v-on:click="aggiornamentoChecked(prodotto)" v-bind:checked="prodotto.preso" type="checkbox" v-bind:value="prodotto.testo" />
+                        </li>
+                    </ul>
                 </div>
+            </div>
 
+            <div id="idEliminazione" v-show="numProdottiSelezionati != 0">
+                <button class="btn btn-danger" v-on:click="eliminazioneProdottiSelezionati()">Elimina {{numProdottiSelezionati}} prodotti selezionati</button>
+            </div>
 
-
-
-                <!--Stampa e controllo lista della spesa-->
-
-                <div id ="idLista">
-                        <div v-if = "listaSpesa.length == 0">Non sono presenti prodotti nella lista.</div>
-                        <div v-else>
-                            <ul>
-                                <li v-for = "prodotto in listaSpesa">
-                                    <label v-bind:class = "'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
-                                    <input  v-on:click = "aggiornamentoChecked(prodotto)"  v-bind:checked = "prodotto.preso" 
-                                            type = "checkbox" v-bind:value = "prodotto.testo"/>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-            
-                    <div id = "idEliminazione" v-show = "numProdottiSelezionati != 0">
-                        <button v-on:click = "eliminazioneProdottiSelezionati()">Elimina {{numProdottiSelezionati}} prodotti selezionati</button>
-                    </div>
-                
-                </div>
+        </div>
+    </div>
 </body>
-
-
 
 </html>
