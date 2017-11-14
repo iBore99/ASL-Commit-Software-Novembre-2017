@@ -10,14 +10,18 @@
         </div>
 
         <!--Stampa e controllo lista della spesa-->
+        
         <div id ="idLista">
-            <ul>
-                <li v-for = "prodotto in listaSpesa">
-                    <label v-bind:class = "'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
-                    <input  v-on:click = "aggiornamentoChecked(prodotto)"  v-bind:checked = "prodotto.preso" 
-                            type = "checkbox" v-bind:value = "prodotto.testo"/>
-                </li>
-            </ul>
+            <div v-if = "listaSpesa.length == 0">Non sono presenti prodotti nella lista.</div>
+            <div v-else>
+                <ul>
+                    <li v-for = "prodotto in listaSpesa">
+                        <label v-bind:class = "'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
+                        <input  v-on:click = "aggiornamentoChecked(prodotto)"  v-bind:checked = "prodotto.preso" 
+                                type = "checkbox" v-bind:value = "prodotto.testo"/>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div id = "idEliminazione" v-show = "numProdottiSelezionati != 0">
@@ -86,9 +90,13 @@
                }
 
               
-            }
+            },
+            prodottiInLista: function(){
+                    return 
+                }
 
         }
+
     }
 
 </script>
