@@ -10,7 +10,7 @@
                 <!--Form per aggiunta prodotto alla lista -->
                 <div id = "idAggiuntaProdotto">
                     <label>Aggiungi prodotti alla lista: </label>
-                    <input v-on:keyup.enter = "aggiuntaProdotto()" type ="text" v-model = "nuovoProdotto"/>
+                    <input v-on:keyup.enter = "aggiuntaProdotto()" type ="text" v-model = "nuovoProdotto" placeholder = "Nome del prodotto..."/>
                     <input v-on:click= "aggiuntaProdotto()" type = "submit" value = "Aggiungi"/>
                 </div>
 
