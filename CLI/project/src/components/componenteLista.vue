@@ -3,10 +3,8 @@
     <div>
         <!--Form per aggiunta prodotto alla lista -->
         <div id = "idAggiuntaProdotto">
-            <label>Aggiungi prodotti alla lista: </label>
-
-            <input v-on:keyup.enter = "aggiuntaProdotto()" type ="text" v-model = "nuovoProdotto"/>
-            <input v-on:click= "aggiuntaProdotto()" type = "submit" value = "Aggiungi"/>
+            <input type ="text" class="form-control" placeholder = "Nome del prodotto..." v-on:keyup.enter = "aggiuntaProdotto()"  v-model = "nuovoProdotto"/>
+            <input type = "submit" class = "btn btn-primary" v-on:click= "aggiuntaProdotto()" value = "Aggiungi"/>
         </div>
 
         <!--Stampa e controllo lista della spesa-->
@@ -14,8 +12,9 @@
         <div id ="idLista">
             <div v-if = "listaSpesa.length == 0">Non sono presenti prodotti nella lista.</div>
             <div v-else>
+                
                 <ul>
-                    <li v-for = "prodotto in listaSpesa">
+                    <li  v-for = "prodotto in listaSpesa">
                         <label v-bind:class = "'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
                         <input  v-on:click = "aggiornamentoChecked(prodotto)"  v-bind:checked = "prodotto.preso" 
                                 type = "checkbox" v-bind:value = "prodotto.testo"/>
@@ -25,7 +24,7 @@
         </div>
 
         <div id = "idEliminazione" v-show = "numProdottiSelezionati != 0">
-            <button v-on:click = "eliminazioneProdottiSelezionati()">Elimina {{numProdottiSelezionati}} prodotti selezionati</button>
+            <button class = "btn btn-danger" v-on:click = "eliminazioneProdottiSelezionati()">Elimina {{numProdottiSelezionati}} prodotti selezionati</button>
         </div>
     
     </div>
@@ -33,6 +32,7 @@
 
 <script>
     export default{
+            
         data(){
             return {
 
@@ -51,21 +51,24 @@
                     }, 
                     {
                         preso: false,
-                        testo: "patatine"
+                        testo: "Patatine"
                     }]
             }
         },
 
         methods:{
+            
            aggiuntaProdotto: function(){
-               this.listaSpesa.push(
-                   {
-                       preso: false,
-                       testo: this.nuovoProdotto
-                   }
-               );
+               if(this.nuovoProdotto){
+                this.listaSpesa.push(
+                    {
+                        preso: false,
+                        testo: this.nuovoProdotto
+                    }
+                );
 
-               this.nuovoProdotto = "";
+                this.nuovoProdotto = "";
+               }
            },
 
            aggiornamentoChecked: function(prodotto){
@@ -103,14 +106,82 @@
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 
-    #idAggiuntaProdotto label{
-        display: block; 
-        margin-bottom: 10px;
-    }
-    .prodottoPreso-true{
-        text-decoration: line-through;
-        color:grey;
-    }
+.prodottoPreso-true {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.container {
+    padding-top: 30px;
+}
+
+div#app {
+    padding: 15px;
+    border-radius: 20px;
+    background-color: rgba(200, 207, 211, 0.212);
+    display: table;
+    margin: 0 auto;
+}
+
+li:nth-last-child() {
+    border-radius: 5px;
+}
+
+li:nth-child(even) {
+    background-color: rgba(208, 222, 231, 0.644);
+}
+
+.testoProdotto {
+    max-width: 245px;
+    word-break: break-all;
+}
+
+h1 {
+    text-align: center;
+}
+
+li {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    display: block;
+    background-color: rgb(188, 210, 226);
+}
+
+ul {
+    padding-left: 0px;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+input[type=checkbox] {
+    float: right;
+}
+
+.form-control {
+    margin-right: 2px;
+    display: inline-block;
+    width: auto;
+}
+
+div#idAggiuntaProdotto {
+    margin-top: 50px;
+}
+
+div#idLista {
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+div#idEliminazione {
+    margin-top: 25px;
+}
+
+input[type=submit].btn{
+    margin-bottom: 1px;
+}
 </style>

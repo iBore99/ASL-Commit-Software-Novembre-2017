@@ -1,12 +1,13 @@
 <template>
-  <div>
-    
-    <div class = "container">
-      <h1>{{title}}</h1>
-    <cLista/>
+  
+  <div class = "container">
+    <div id ="app">
+      
+        <h1>{{title}}</h1>
+      <cLista/>
+      
     </div>
   </div>
-
 </template>
 
 <script>
