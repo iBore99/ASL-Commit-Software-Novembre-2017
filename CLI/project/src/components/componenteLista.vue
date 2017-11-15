@@ -171,6 +171,9 @@ label {
 
 input[type=checkbox] {
     float: right;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
 }
 
 .form-control {
