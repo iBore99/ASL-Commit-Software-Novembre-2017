@@ -15,8 +15,9 @@
                 
                     <draggable v-model="listaSpesa"  @start="drag=true" @end="drag=false">
                         <li v-for = "prodotto in listaSpesa">
-                            <label class = "testoProdotto"v-bind:class = "'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
-                            <input  v-on:click = "aggiornamentoChecked(prodotto)"  v-bind:checked = "prodotto.preso" 
+
+                            <label class = "testoProdotto" v-bind:class = "'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
+                            <input v-on:keyup.delete = "eliminazioneProdottiSelezionati()" v-on:click = "aggiornamentoChecked(prodotto)"  v-bind:checked = "prodotto.preso" 
                                     type = "checkbox" v-bind:value = "prodotto.testo"/>
                         </li>
                     </draggable>
