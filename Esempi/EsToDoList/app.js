@@ -33,6 +33,8 @@ window.onload = function() {
                     });
 
                     this.nuovoProdotto = "";
+                } else {
+                    alert("Devi prima inserire il nome del prodotto!");
                 }
 
 

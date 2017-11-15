@@ -13,26 +13,32 @@
             <div v-if = "listaSpesa.length == 0">Non sono presenti prodotti nella lista.</div>
             <div v-else>
                 
-                <ul>
-                    <li  v-for = "prodotto in listaSpesa">
-                        <label v-bind:class = "'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
-                        <input  v-on:click = "aggiornamentoChecked(prodotto)"  v-bind:checked = "prodotto.preso" 
-                                type = "checkbox" v-bind:value = "prodotto.testo"/>
-                    </li>
-                </ul>
+                    <draggable v-model="listaSpesa"  @start="drag=true" @end="drag=false">
+                        <li v-for = "prodotto in listaSpesa">
+                            <label class = "testoProdotto"v-bind:class = "'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
+                            <input  v-on:click = "aggiornamentoChecked(prodotto)"  v-bind:checked = "prodotto.preso" 
+                                    type = "checkbox" v-bind:value = "prodotto.testo"/>
+                        </li>
+                    </draggable>
             </div>
         </div>
 
         <div id = "idEliminazione" v-show = "numProdottiSelezionati != 0">
             <button class = "btn btn-danger" v-on:click = "eliminazioneProdottiSelezionati()">Elimina {{numProdottiSelezionati}} prodotti selezionati</button>
         </div>
-    
+
     </div>
 </template>
 
 <script>
+
+    import draggable from 'vuedraggable'
+
     export default{
-            
+         components:{
+             draggable
+         } ,
+
         data(){
             return {
 
@@ -69,6 +75,10 @@
 
                 this.nuovoProdotto = "";
                }
+               else
+                {
+                    alert("Devi prima inserire il nome del prodotto!")
+               }
            },
 
            aggiornamentoChecked: function(prodotto){
@@ -78,7 +88,7 @@
 
            eliminazioneProdottiSelezionati: function(){
                
-               if(window.confirm("Confermi l'eleminazione di " + this.numProdottiSelezionati + " prodotti?"))
+               if(window.confirm("Confermi l'eliminazione di " + this.numProdottiSelezionati + " prodotti?"))
                {
                    var nuovaLista = new Array;
 
@@ -150,8 +160,8 @@ li {
     background-color: rgb(188, 210, 226);
 }
 
-ul {
-    padding-left: 0px;
+#idLista li{
+    cursor: move;
 }
 
 label {
