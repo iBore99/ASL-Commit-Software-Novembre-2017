@@ -10,24 +10,22 @@
         <!--Stampa e controllo lista della spesa-->
         
         <div id ="idLista">
-            <div v-if = "listaSpesa.length == 0">Non sono presenti prodotti nella lista.</div>
-            <div v-else>
+            <div v-if = "listaSpesa.length == 0">Non sono presenti prodotti nella lista.</div> <!--Se non ci sono oggetti nell'array-->
+            <div v-else>           <!--Se nell'array ci sono degli oggetti, stampa tutti gli elementi-->
                 
-                    <draggable v-model="listaSpesa"  @start="drag=true" @end="drag=false">
-                        <li v-for = "prodotto in listaSpesa">
-
+                    <draggable v-model="listaSpesa"  @start="drag=true" @end="drag=false">    
+                        <li v-for = "prodotto in listaSpesa">  <!--ogni prodotto stampato diventa un li-->
                             <label class = "testoProdotto" v-bind:class = "'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
                             <input v-on:keyup.delete = "eliminazioneProdottiSelezionati()" v-on:click = "aggiornamentoChecked(prodotto)"  v-bind:checked = "prodotto.preso" 
-                                    type = "checkbox" v-bind:value = "prodotto.testo"/>
+                                    type = "checkbox"/>
                         </li>
                     </draggable>
             </div>
         </div>
 
-        <div id = "idEliminazione" v-show = "numProdottiSelezionati != 0">
+        <div id = "idEliminazione" v-show = "numProdottiSelezionati != 0"> <!--se c'è almeno un prodotto selezionato, appare il pulsante per l'eliminazione-->
             <button class = "btn btn-danger" v-on:click = "eliminazioneProdottiSelezionati()">Elimina {{numProdottiSelezionati}} prodotti selezionati</button>
         </div>
-
     </div>
 </template>
 
@@ -49,8 +47,8 @@
 
                 listaSpesa: [
                     {
-                        preso: false,
-                        testo: "Latte"
+                        preso: false,      //oggetti hanno due variabili. preso indica se è stato selezionato 
+                        testo: "Latte"         //testo identifica il prodotto
                     }, 
                     {
                         preso: false,
@@ -67,47 +65,47 @@
             
            aggiuntaProdotto: function(){
                if(this.nuovoProdotto){
-                this.listaSpesa.push(
+                 this.listaSpesa.push(     //funzione che aggiunge l'elemento preso all'array di oggetti
                     {
-                        preso: false,
-                        testo: this.nuovoProdotto
+                        preso: false,    //false di default         
+                        testo: this.nuovoProdotto    //tramite il v-model assegno a testo il nome digitato
                     }
                 );
-
-                this.nuovoProdotto = "";
+                this.nuovoProdotto = "";      //alla fine reinizializzo la variabile 
                }
-               else
+               else    //se non viene inserito niente e si preme invio, avverto l'utente tramite l'alert
                 {
                     alert("Devi prima inserire il nome del prodotto!")
                }
            },
 
-           aggiornamentoChecked: function(prodotto){
-               prodotto.preso = !prodotto.preso;
-               if(prodotto.preso ? this.numProdottiSelezionati++ :  this.numProdottiSelezionati--);
+
+
+           aggiornamentoChecked: function(prodotto){         
+               prodotto.preso = !prodotto.preso;  //cambia la condizione del prodotto da false a true e viceversa
+               //a seconda se è selezionato o meno aumento o diminuisco il numero dei prodotti selezionati
+               if(prodotto.preso ? this.numProdottiSelezionati++ :  this.numProdottiSelezionati--); 
+
            },
 
            eliminazioneProdottiSelezionati: function(){
-               
+        
                if(window.confirm("Confermi l'eliminazione di " + this.numProdottiSelezionati + " prodotti?"))
                {
-                   var nuovaLista = new Array;
+                   var nuovaLista = new Array;   //viene creato un nuovo array 
 
-                   for(var prodotto of this.listaSpesa){
-                       if(!prodotto.preso){
+                   for(var prodotto of this.listaSpesa)
+                   {
+                       if(!prodotto.preso){        //faccio nel nuovo array il push solo degli elementi che non sono spuntati
                            nuovaLista.push(prodotto);
                        }
                     }
-                    
                     this.listaSpesa = nuovaLista;
                     this.numProdottiSelezionati = 0;
                }
 
               
-            },
-            prodottiInLista: function(){
-                    return 
-                }
+            }
 
         }
 
@@ -119,7 +117,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 
-.prodottoPreso-true {
+.prodottoPreso-true {       /**quando un prodotto è selezionato, viene sbarrato il nome e cambia il colore in grigio */
     text-decoration: line-through;
     color: grey;
 }
