@@ -5,3 +5,6 @@ v-for = "elem in elements"	//Serve per iterare su un array
 v-if = "Condizione"		//Mostra un elemento se è verificata la condizione
 v-else 				//Si usa in associazione al v-if, mettendolo dopo la sua chiusura
 v-show = "Condizione"		//Stessa cosa di v-if
+
+
+
