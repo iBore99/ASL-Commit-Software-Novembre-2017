@@ -90,7 +90,7 @@
 
            eliminazioneProdottiSelezionati: function(){
         
-               if(window.confirm("Confermi l'eliminazione di " + this.numProdottiSelezionati + " prodotti?"))
+               if(this.numProdottiSelezionati != 0 && window.confirm("Confermi l'eliminazione di " + this.numProdottiSelezionati + " prodotti?"))
                {
                    var nuovaLista = new Array;   //viene creato un nuovo array 
 
