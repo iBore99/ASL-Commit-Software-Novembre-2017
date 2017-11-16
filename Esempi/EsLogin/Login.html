@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script src="../../vue.js"></script>
+    <script src="app.js"></script>
+    <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="stile.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  
+    
+    <div class="container">
+        <div id="app">
+            <h1>Pagina di Login</h1>
+
+            <div id="aggiuntaCredenziali">
+                <form v-on:submit.prevent  = "" action="">
+                        <input type="text"  class="form-control"  placeholder = "Inserisci username..." required/> 
+                        <input type="password" class="form-control" placeholder ="Inserisci la tua password..." required/>
+                        <input v-on:submit = ""     type="submit" class="btn btn-primary" value = "Accedi"/>
+                </form>
+                
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
