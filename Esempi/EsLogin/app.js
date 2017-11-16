@@ -1,35 +1,22 @@
-window.onload = function() 
-{
+window.onload = function() {
+    (function() {
+        localStorage.setItem('username', 'pippo');
+        localStorage.setItem('password', '123');
+    });
 
-  new Vue({
+    new Vue({
 
-    el: '#app', 
+        el: '#app',
 
-    data:{
-        username: "",
-        password: "",
-    },
+        data: {
+            username: "",
+            password: "",
+        },
 
-    methods:{
-        
-    }
+        methods: {
 
+        }
 
-
-
-
-
-
-
-  })
-
-
-
-
-
-
-
-
-
+    })
 
 }

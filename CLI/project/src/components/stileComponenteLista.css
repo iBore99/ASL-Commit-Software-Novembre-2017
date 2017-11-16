@@ -1,0 +1,64 @@
+.prodottoPreso-true {
+    /**quando un prodotto è selezionato, viene sbarrato il nome e cambia il colore in grigio */
+    text-decoration: line-through;
+    color: grey;
+}
+
+li:nth-last-child() {
+    border-radius: 5px;
+}
+
+li:nth-child(even) {
+    background-color: rgba(208, 222, 231, 0.644);
+}
+
+.testoProdotto {
+    max-width: 245px;
+    word-break: break-all;
+}
+
+li {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    display: block;
+    background-color: rgb(188, 210, 226);
+}
+
+#idLista li {
+    cursor: move;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+input[type=checkbox] {
+    float: right;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+}
+
+.form-control {
+    margin-right: 2px;
+    display: inline-block;
+    width: auto;
+}
+
+div#idAggiuntaProdotto {
+    margin-top: 50px;
+}
+
+div#idLista {
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+div#idEliminazione {
+    margin-top: 25px;
+}
+
+input[type=submit].btn {
+    margin-bottom: 1px;
+}

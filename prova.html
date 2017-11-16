@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.15.0/vuedraggable.min.js"></script> -->
+    <script src="vue.js"></script>
+    <script src="Nostraapp.js"></script>
+    <script src="sortableNostro.js"></script>
+    <script src="draggableNostro.js"></script>
+    <title>JS Bin</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <div>
+            <h2>Draggable</h2>
+            <draggable :list="myArray">
+                <div v-for="element in myArray">{{element.name}}</div>
+            </draggable>
+        </div>
+</body>
+
+</html>

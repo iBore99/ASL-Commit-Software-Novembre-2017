@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <script src="../../vue.js"></script>
     <script src="app.js"></script>
@@ -7,23 +8,25 @@
 </head>
 
 <body>
-  
-    
+    <script>
+        // Check browser support
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            localStorage.setItem("username", "pippo");
+        }
+    </script>
     <div class="container">
         <div id="app">
             <h1>Pagina di Login</h1>
 
             <div id="aggiuntaCredenziali">
-                <form v-on:submit.prevent  = "" action="">
-                        <input type="text"  class="form-control"  placeholder = "Inserisci username..." required/> 
-                        <input type="password" class="form-control" placeholder ="Inserisci la tua password..." required/>
-                        <input v-on:submit = ""     type="submit" class="btn btn-primary" value = "Accedi"/>
+                <form v-on:submit.prevent="" action="">
+                    <input type="text" class="form-control" placeholder="Inserisci username..." required/>
+                    <input type="password" class="form-control" placeholder="Inserisci la tua password..." required/>
+                    <input v-on:submit="" type="submit" class="btn btn-primary" value="Accedi" />
                 </form>
-                
+
             </div>
-
-
-
 
         </div>
     </div>
