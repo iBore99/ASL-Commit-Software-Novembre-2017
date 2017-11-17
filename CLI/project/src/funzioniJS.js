@@ -1,6 +1,6 @@
-export default function() {
-
-    return exports.mostraAlertJS = () => {
+module.exports = {
+    mostraAlertJS: function() {
         alert("Sono dentro il file javascript");
     }
+
 }
