@@ -2,13 +2,18 @@
 
 <head>
     <script src="../../vue.js"></script>
-    <script src="app.js"></script>
+    
     <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="stile.css" rel="stylesheet" type="text/css">
+    
+    <script src="../../Draggable/sortable.js"></script>
+    <script src="../../Draggable/draggable.js"></script>
+    <script src="app.js"></script>
 
 </head>
 
 <body>
+    
     <div class="container">
         <div id="app">
             <h1>Lista della spesa</h1>
@@ -23,14 +28,14 @@
 
             <div id="idLista">
                 <div v-if="listaSpesa.length == 0">Non sono presenti prodotti nella lista.</div>
-                <div v-else>
-                    <ul>
+                <div v-else>  <!--Se nell'array ci sono degli oggetti, stampa tutti gli elementi-->
+                    <draggable :list="listaSpesa">
                         <li v-for="prodotto in listaSpesa">
 
                             <label class="testoProdotto" v-bind:class="'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
-                            <input v-on:click="aggiornamentoChecked(prodotto)" v-bind:checked="prodotto.preso" type="checkbox" v-bind:value="prodotto.testo" />
+                            <input v-on:click="aggiornamentoChecked(prodotto)" v-on:keyup.delete = "eliminazioneProdottiSelezionati()" v-bind:checked="prodotto.preso" type="checkbox" v-bind:value="prodotto.testo" />
                         </li>
-                    </ul>
+                    </draggable>
                 </div>
             </div>
 

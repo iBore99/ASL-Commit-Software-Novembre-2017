@@ -47,7 +47,7 @@ window.onload = function() {
 
             eliminazioneProdottiSelezionati: function() {
 
-                if (window.confirm("Confermi l'eleminazione di " + this.numProdottiSelezionati + " prodotti?")) {
+                if (this.numProdottiSelezionati != 0 && window.confirm("Confermi l'eleminazione di " + this.numProdottiSelezionati + " prodotti?")) {
                     var nuovaLista = new Array;
 
                     for (var prodotto of this.listaSpesa) {
@@ -59,9 +59,11 @@ window.onload = function() {
                     this.listaSpesa = nuovaLista;
                     this.numProdottiSelezionati = 0;
                 }
-
-
             },
+
+
+
+           
 
 
         }
