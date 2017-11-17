@@ -25,6 +25,7 @@ window.onload = function() {
         },
 
         methods: {
+
             aggiuntaProdotto: function() {
                 if (this.nuovoProdotto != "") {
                     this.listaSpesa.push({
