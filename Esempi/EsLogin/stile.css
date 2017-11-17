@@ -1,0 +1,31 @@
+
+div#app
+{
+    padding: 20px;
+    background-color: rgb(185, 199, 226);
+    border-radius: 30px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    max-width: 400px;
+    
+}
+
+div#richiestaRegistrazione
+{
+    margin-top: 50px;
+}
+
+input{
+    margin: 15 auto;
+    max-width: 300px;
+}
+
+input[type=submit]{
+    margin-top: 5px;
+}
+
+h1{
+    margin-bottom: 40px;
+}

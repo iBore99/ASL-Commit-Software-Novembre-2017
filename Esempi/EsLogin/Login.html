@@ -9,25 +9,35 @@
 
 <body>
     <script>
-        // Check browser support
-        if (typeof(Storage) !== "undefined") {
-            // Store
-            localStorage.setItem("username", "pippo");
-        }
+                
     </script>
+
     <div class="container">
-        <div id="app">
-            <h1>Pagina di Login</h1>
+        <div id="app" :onload="inizializzaDati()">
 
-            <div id="aggiuntaCredenziali">
-                <form v-on:submit.prevent="" action="">
-                    <input type="text" class="form-control" placeholder="Inserisci username..." required/>
-                    <input type="password" class="form-control" placeholder="Inserisci la tua password..." required/>
-                    <input v-on:submit="" type="submit" class="btn btn-primary" value="Accedi" />
-                </form>
-
+            <div id="login" v-if="controlloPulsante">
+                    <h1>Pagina di Login</h1>
+                <form v-on:submit.prevent="confrontaCredenziali()" action="">
+                    <input type="text" class="form-control" v-model="nuovoUsername" placeholder="Inserisci username..." required/>
+                    <input type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
+                    <input type="submit" class="btn btn-primary" value="Accedi" />
+                </form>  
+                <div id="richiestaRegistrazione">
+                        <p>Non sei ancora registrato?</p>
+                        <button class="btn btn-primary" v-on:click="cambiaStato()">Clicca qui!</button>
+        
+                        
+                </div>
             </div>
 
+            <div id="registrazione" v-else>  
+                <form v-on:submit.prevent="aggiuntaUtente()" action=""> 
+                    <input type="text" class="form-control" v-model="nuovoUsername" placeholder="Inserisci username..." required/>
+                    <input type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
+                    <input type="submit" class="btn btn-primary" value="Registrati">
+                </form>
+                </div>
+            
         </div>
     </div>
 

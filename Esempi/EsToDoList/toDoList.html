@@ -6,7 +6,7 @@
     <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="stile.css" rel="stylesheet" type="text/css">
     
-    <script src="../../Draggable/sortable.js"></script>
+    <script src="../../Draggable/sortable.js"></script>  
     <script src="../../Draggable/draggable.js"></script>
     <script src="app.js"></script>
 
@@ -29,7 +29,7 @@
             <div id="idLista">
                 <div v-if="listaSpesa.length == 0">Non sono presenti prodotti nella lista.</div>
                 <div v-else>  <!--Se nell'array ci sono degli oggetti, stampa tutti gli elementi-->
-                    <draggable :list="listaSpesa">
+                     <draggable v-bind:list="listaSpesa">   <!-- aggiungere draggable per abilitare drag and drop -->
                         <li v-for="prodotto in listaSpesa">
 
                             <label class="testoProdotto" v-bind:class="'prodottoPreso-' + prodotto.preso">{{prodotto.testo}}</label>
