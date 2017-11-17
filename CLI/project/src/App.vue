@@ -4,6 +4,7 @@
     <div id ="app">
       
         <h1>{{title}}</h1>
+        <button @click = "stampaAlert()">CLICCAMI</button>
       <cLista/>
       
     </div>
@@ -11,8 +12,11 @@
 </template>
 
 <script>
+
   import componenteLista from "./components/componenteLista.vue"
-  
+   var myJsFile = require('./funzioniJS.js');
+ // import funzioniJS from "./funzioniJS.js"
+
   export default{
     components: {
       'cLista': componenteLista
@@ -20,6 +24,12 @@
     data(){
       return {
         title: 'Lista della spesa'
+      }
+    },
+    methods:{
+      stampaAlert: () => {
+           var a = myJsFile.mostraAlertJS();
+           
       }
     }
   }

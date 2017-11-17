@@ -1,0 +1,7 @@
+  	serializzaObjInJson(obj){
+          return JSON.stringify(obj);
+        }
+
+        deserializzaObjDaJson(stringa_json) {
+              return eval(stringa_json);
+        }
