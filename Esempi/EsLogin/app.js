@@ -22,10 +22,41 @@ window.onload = function() {
                 if(this.stringaJson)
                   this.utenti = this.deserializzaObjDaJson(this.stringaJson);
             },
+
+            validazioneDati(){
+                return (this.passwordValida() && this.controlloUsername())
+
+             },
+
+             passwordValida(){
+                
+                    return (
+                        /^[a-zA-Z0-9]{6,16}$/.test(this.nuovaPassword) &&
+                        /[A-Z]/.test(this.nuovaPassword) &&
+                        /[a-z]/.test(this.nuovaPassword) &&
+                        /[0-9]/.test(this.nuovaPassword) ? true : alert("Password non valida!")
+                    )
+                    
+             },
+
+             controlloUsername(){
+                 for(var utente of this.utenti){
+                     if(utente.username == this.nuovoUsername){
+                        alert("Username già esistente!");
+                        return false;
+                     }
+                 }
+                 
+                 return true;
+             },
+
             aggiuntaUtente(){          //metodo per la registrazione di un nuovo utente
 
+                if(this.validazioneDati()){
                     if(this.stringaJson)
                         this.utenti = this.deserializzaObjDaJson(this.stringaJson);
+                    
+                
                     
                     this.utenti.push(
                         {
@@ -34,11 +65,13 @@ window.onload = function() {
                         });
 
                         
-                        this.nuovoUsername="";
-                        this.nuovaPassword="";
-                        this.stringaJson = this.serializzaObjInJson(this.utenti);
-                        localStorage.setItem("utenti", this.stringaJson);                  
-              
+                    this.stringaJson = this.serializzaObjInJson(this.utenti);
+                    localStorage.setItem("utenti", this.stringaJson);       
+                        
+                    this.nuovoUsername="";
+                    this.nuovaPassword="";
+                    alert("Registrazione avvenuta con successo!");
+                }
             },
 
             cambiaStato()
@@ -70,8 +103,8 @@ window.onload = function() {
                     return eval(stringa_json);
               }
            
-        }  //fine methods
+        }  
 
-    })   //fine vue
+    }) 
 
 }
