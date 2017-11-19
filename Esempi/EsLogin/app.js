@@ -6,7 +6,12 @@ window.onload = function() {
 
         data: {
 
-           
+            /*Variabili flag che mi servono per decidere cosa mostrare 
+            nella pagina in base aai dati inseriti*/
+         
+            usernameValido: true,   
+            passwordValida: true,
+            
             nuovoUsername:"",
             nuovaPassword:"",
             stringaJson: "",
@@ -24,29 +29,38 @@ window.onload = function() {
             },
 
             validazioneDati(){
-                return (this.passwordValida() && this.controlloUsername())
+                return (this.passwordValida && this.usernameValido)
 
              },
 
-             passwordValida(){
+            controlloPassword(){
                 
-                    return (
+                    if(
                         /^[a-zA-Z0-9]{6,16}$/.test(this.nuovaPassword) &&
                         /[A-Z]/.test(this.nuovaPassword) &&
                         /[a-z]/.test(this.nuovaPassword) &&
-                        /[0-9]/.test(this.nuovaPassword) ? true : alert("Password non valida!")
-                    )
+                        /[0-9]/.test(this.nuovaPassword) 
+                    ){
+
+                        this.passwordValida = true;
+                        return true;
+                    }
+                    else this.passwordValida = false;
+
+                    return false;
                     
              },
 
-             controlloUsername(){
+            controlloUsername(){
                  for(var utente of this.utenti){
                      if(utente.username == this.nuovoUsername){
-                        alert("Username già esistente!");
+                        this.usernameValido = false;
                         return false;
                      }
                  }
                  
+
+                 this.usernameValido = true;
                  return true;
              },
 

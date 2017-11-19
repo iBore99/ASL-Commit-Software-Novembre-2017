@@ -1,54 +1,51 @@
 <html>
 
-<head>
-    <script src="../../vue.js"></script>
-    <script src="app.js"></script>
-    <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="stile.css" rel="stylesheet" type="text/css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <script src="../../vue.js"></script>
+        <script src="app.js"></script>
+        <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="stile.css" rel="stylesheet" type="text/css">
+    </head>
 
-<body>
-    <script>
-                
-    </script>
+    <body>
+        <div class="container">
+            <div id="app" :onload="inizializzaDati()">
 
-    <div class="container">
-        <div id="app" :onload="inizializzaDati()">
+                <!-- PAGINA DI LOGIN -->
+                <div id="login" v-if="controlloPulsante">
+                    <h1>Login</h1>
+                    <form v-on:submit.prevent="confrontaCredenziali()" action="">
+                        <input type="text" class="form-control" v-model="nuovoUsername" placeholder="Inserisci username..." required/>
+                        <input type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
+                        <input type="submit" class="btn btn-primary" value="Accedi" />
+                    </form>  
+                    <div id="richiestaRegistrazione">
+                            <p>Non sei ancora registrato?</p>
+                            <button class="btn btn-primary" v-on:click="cambiaStato()">Registrati!</button>     
+                    </div>
+                </div>  
 
-            <div id="login" v-if="controlloPulsante">
-                <h1>Login</h1>
-                <form v-on:submit.prevent="confrontaCredenziali()" action="">
-                    <input type="text" class="form-control" v-model="nuovoUsername" placeholder="Inserisci username..." required/>
-                    <input type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
-                    <input type="submit" class="btn btn-primary" value="Accedi" />
-                </form>  
-                <div id="richiestaRegistrazione">
-                        <p>Non sei ancora registrato?</p>
-                        <button class="btn btn-primary" v-on:click="cambiaStato()">Registrati!</button>     
+                <!-- PAGINA DI REGISTRAZIONE -->
+                <div id="registrazione" v-else>  
+                    <h1>Registrazione</h1>
+                    <form v-on:submit.prevent="aggiuntaUtente()" action=""> 
+                        <input v-bind:class = " 'errore-input-' + !usernameValido " v-on:keyup = "controlloUsername()"  type="text" class="form-control" v-model="nuovoUsername" placeholder="Inserisci username..." required/>
+                        <input v-bind:class = " 'errore-input-' + !passwordValida " v-on:keyup = "controlloPassword()" type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
+
+                        <p class = "errore-dati" v-show  ="!usernameValido">Errore: Nome utente già esistente!</p>
+                        <p class = "errore-dati" v-show  ="!passwordValida">Errore: Password troppo debole!</p>
+                        <input type="submit" class="btn btn-primary" value="Registrati">
+                    </form>
+                    <div id="richiestaRegistrazione">
+                            <p>Sei già registrato?</p>
+                            <button class="btn btn-primary" v-on:click="cambiaStato()">Accedi!</button>     
+                    </div>
                 </div>
             </div>
-
-            <div id="registrazione" v-else>  
-                <h1>Registrazione</h1>
-                <form v-on:submit.prevent="aggiuntaUtente()" action=""> 
-                    <input type="text" class="form-control" v-model="nuovoUsername" placeholder="Inserisci username..." required/>
-                    <input type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
-
-                    <!-- DA FARE: METTERE UNA VARIABILE CHE INDICA SE IL NOME UTENTE è STATO GIà PRESO -->
-                    <p v-show  ="usernameValido">Username non valido: Nome utente già esistente</p>
-                    <input type="submit" class="btn btn-primary" value="Registrati">
-                </form>
-                <div id="richiestaRegistrazione">
-                        <p>Sei già registrato?</p>
-                        <button class="btn btn-primary" v-on:click="cambiaStato()">Accedi!</button>     
-                </div>
-                </div>
-            
         </div>
-    </div>
-
-
-
-</body>
-
+    </body>
 </html>
+
+
+

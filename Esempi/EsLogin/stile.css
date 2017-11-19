@@ -29,3 +29,12 @@ input[type=submit]{
 h1{
     margin-bottom: 40px;
 }
+
+.errore-dati{
+    color:red;
+}
+
+.errore-input-true, .errore-input-true:focus{
+    border-color: red;
+    background-color: #ff000026;
+}
