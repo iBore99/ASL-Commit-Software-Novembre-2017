@@ -8,7 +8,7 @@ window.onload = function() {
 
             /*Variabili flag che mi servono per decidere cosa mostrare 
             nella pagina in base aai dati inseriti*/
-
+            messaggioErroreUsername: "",
             usernameValido: true,
             passwordValida: true,
 
@@ -51,22 +51,37 @@ window.onload = function() {
 
                     return false;
                 } else {
-                    this.passwordValida = true;
+                    this.passwordValida = true; //Se la casella di testo è vuota, si ritorna alla condizione iniziale.
                 }
 
             },
 
             controlloUsername() {
+                if (this.nuovoUsername) {
+                    var usernameDisponibile = this.controlloUsernameDisponibile();
+                    var usernameCorretto = this.nuovoUsername.length >= 4;
+
+                    if (usernameDisponibile && usernameCorretto) {
+                        this.usernameValido = true;
+                    } else {
+                        this.usernameValido = false;
+                        this.messaggioErroreUsername = "ERRORE: ";
+                        if (!usernameCorretto)
+                            this.messaggioErroreUsername += "Username non valido!";
+                        else this.messaggioErroreUsername += "Username già esistente!";
+                    }
+                } else {
+                    this.usernameValido = true; //Se la casella di testo è vuota, si ritorna alla condizione iniziale.
+                }
+            },
+
+            controlloUsernameDisponibile() {
                 for (var utente of this.utenti) {
                     if (utente.username == this.nuovoUsername) {
-                        this.usernameValido = false;
                         return false;
                     }
                 }
-
-
-                this.usernameValido = true;
-                return true;
+                return true
             },
 
             aggiuntaUtente() { //metodo per la registrazione di un nuovo utente
@@ -74,7 +89,6 @@ window.onload = function() {
                 if (this.validazioneDati()) {
                     if (this.stringaJson)
                         this.utenti = this.deserializzaObjDaJson(this.stringaJson);
-
 
 
                     this.utenti.push({
@@ -89,6 +103,8 @@ window.onload = function() {
                     this.nuovoUsername = "";
                     this.nuovaPassword = "";
                     alert("Registrazione avvenuta con successo!");
+                } else {
+                    alert("Registrazione fallita!\nSono presenti degli errori.");
                 }
             },
 
@@ -121,5 +137,4 @@ window.onload = function() {
         }
 
     })
-
 }
