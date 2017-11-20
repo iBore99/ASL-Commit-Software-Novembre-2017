@@ -13,6 +13,7 @@ window.onload = function() {
             passwordValida: true,
 
             nuovoUsername: "",
+            nuovaEmail:"",
             nuovaPassword: "",
             stringaJson: "",
             controlloPulsante: true,
@@ -59,7 +60,7 @@ window.onload = function() {
                     var usernameCorretto = this.nuovoUsername.length >= 4 && !(/[ ]/.test(this.nuovoUsername));
 
                     if (usernameDisponibile && usernameCorretto) {
-                        this.usernameValido = true;  //assume true se l'username non è gia stato preso e se è maggiore di 4 caratteri
+                        this.usernameValido = true;  //assume true se l'username non è gia stato preso e se è stato scritto rispettando le norme
                     } else {
                         this.usernameValido = false;   
                         this.messaggioErroreUsername = "ERRORE: "; 
@@ -87,9 +88,9 @@ window.onload = function() {
                     if (this.stringaJson)
                         this.utenti = this.deserializzaObjDaJson(this.stringaJson);
 
-
                     this.utenti.push({
                         username: this.nuovoUsername,
+                        email: this.nuovaEmail,
                         password: this.nuovaPassword
                     });
 
@@ -98,9 +99,10 @@ window.onload = function() {
                     localStorage.setItem("utenti", this.stringaJson);
 
                     this.nuovoUsername = "";
+                    this.nuovaEmail = "";
                     this.nuovaPassword = "";
-
                     alert("Registrazione avvenuta con successo!");
+
                 } else {
                     alert("Registrazione fallita!\nSono presenti degli errori.");
                 }
@@ -108,21 +110,24 @@ window.onload = function() {
 
             cambiaStato() {
                 this.controlloPulsante = !this.controlloPulsante; //cambia il valore della variabile 
-                this.nuovaPassword = "";
+                this.nuovaPassword = "";    
                 this.nuovoUsername = "";
+                this.nuovaEmail = "";
             },
 
-            confrontaCredenziali() {
-
+            confrontaCredenziali() {  //funzione chiamata nella sezione del login: fa il confronto tra le credenziali inserite e quelle registrate
                 for (var utente of this.utenti) {
-                    if (this.nuovoUsername == utente.username && this.nuovaPassword == utente.password) {
-                        alert("Autenticazione avvenuta con successo.");
+                    if ((this.nuovoUsername == utente.username || this.nuovoUsername == utente.email) && this.nuovaPassword == utente.password) {
+                       //se vengono riconosciuti sia l'username (oppure la mail)che la password, l'autenticazione viene eseguita correttamente
+                        alert("Autenticazione avvenuta con successo."); 
                         return;
                     }
                 }
 
                 alert("Autenticazione fallita!");
             },
+
+
 
             serializzaObjInJson(obj) { //creazione stringa json
                 return JSON.stringify(obj);
