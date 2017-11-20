@@ -29,12 +29,14 @@
             <!-- PAGINA DI REGISTRAZIONE -->
             <div id="registrazione" v-else>
                 <h1>Registrazione</h1>
-                <form v-on:submit.prevent="aggiuntaUtente()" action="">
+                <form v-on:submit.prevent="aggiuntaUtente()" action="">   
+                    <p>Nota: l'username deve contenere almeno 4 caratteri.</p>
                     <input v-bind:class=" 'errore-input-' + !usernameValido " v-on:keyup="controlloUsername()" type="text" class="form-control" v-model="nuovoUsername" placeholder="Inserisci username..." required/>
+                    <p>Nota: la password deve contenere almeno una maiuscola, una minuscola, un numero.</p>
                     <input v-bind:class=" 'errore-input-' + !passwordValida " v-on:keyup="controlloPassword()" type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
 
                     <p class="errore-dati" v-show="!usernameValido">{{messaggioErroreUsername}}</p>
-                    <p class="errore-dati" v-show="!passwordValida">Errore: Password troppo debole!</p>
+                    <p class="errore-dati" v-show="!passwordValida">Errore: Password non valida!</p>
                     <input type="submit" class="btn btn-primary" value="Registrati">
                 </form>
                 <div id="richiestaRegistrazione">

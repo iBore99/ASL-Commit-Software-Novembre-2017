@@ -8,8 +8,8 @@ window.onload = function() {
 
             /*Variabili flag che mi servono per decidere cosa mostrare 
             nella pagina in base aai dati inseriti*/
-            messaggioErroreUsername: "",
-            usernameValido: true,
+            messaggioErroreUsername: "",   //cambia in base al tipo di errore
+            usernameValido: true,       
             passwordValida: true,
 
             nuovoUsername: "",
@@ -38,35 +38,32 @@ window.onload = function() {
                 if (this.nuovaPassword) {
                     /*è necessario questo controllo perchè veniva eseguito il controllo sulla password anche quando non veniva 
                     scritto nulla, per esempio bastava che si fosse premuto il tasto "tab" per passare a quella casella di testo.*/
-                    if (
-                        /^[a-zA-Z0-9?!$+-/.,@^_]{6,16}$/.test(this.nuovaPassword) &&
-                        /[A-Z]/.test(this.nuovaPassword) &&
-                        /[a-z]/.test(this.nuovaPassword) &&
-                        /[0-9]/.test(this.nuovaPassword)
+                    if (  //controllo se la password ha un formato valido 
+                        /^[a-zA-Z0-9?!$+-/.,@^_ ]{6,16}$/.test(this.nuovaPassword) &&
+                        /[A-Z]/.test(this.nuovaPassword) &&  //devono esserci almeno un carattere compreso tra A e Z
+                        /[a-z]/.test(this.nuovaPassword) && //almeno un carattere compreso tra a e z
+                        /[0-9]/.test(this.nuovaPassword)    //almeno un carattere compreso tra 0 e 9
                     ) {
 
                         this.passwordValida = true;
-                        return true;
                     } else this.passwordValida = false;
-
-                    return false;
                 } else {
                     this.passwordValida = true; //Se la casella di testo è vuota, si ritorna alla condizione iniziale.
                 }
 
             },
 
-            controlloUsername() {
+            controlloUsername() {   
                 if (this.nuovoUsername) {
                     var usernameDisponibile = this.controlloUsernameDisponibile();
-                    var usernameCorretto = this.nuovoUsername.length >= 4;
+                    var usernameCorretto = this.nuovoUsername.length >= 4 && !(/[ ]/.test(this.nuovoUsername));
 
                     if (usernameDisponibile && usernameCorretto) {
-                        this.usernameValido = true;
+                        this.usernameValido = true;  //assume true se l'username non è gia stato preso e se è maggiore di 4 caratteri
                     } else {
-                        this.usernameValido = false;
-                        this.messaggioErroreUsername = "ERRORE: ";
-                        if (!usernameCorretto)
+                        this.usernameValido = false;   
+                        this.messaggioErroreUsername = "ERRORE: "; 
+                        if (!usernameCorretto)  //stampo un messaggio d'errore diverso a seconda della condizione che si è verificata o meno
                             this.messaggioErroreUsername += "Username non valido!";
                         else this.messaggioErroreUsername += "Username già esistente!";
                     }
@@ -75,7 +72,7 @@ window.onload = function() {
                 }
             },
 
-            controlloUsernameDisponibile() {
+            controlloUsernameDisponibile() {    //controlla tutti gli username dei database
                 for (var utente of this.utenti) {
                     if (utente.username == this.nuovoUsername) {
                         return false;
@@ -86,7 +83,7 @@ window.onload = function() {
 
             aggiuntaUtente() { //metodo per la registrazione di un nuovo utente
 
-                if (this.validazioneDati()) {
+                if (this.validazioneDati()) { //se questo controllo fallisce sicuramente ci sono degli errori nella registrazione
                     if (this.stringaJson)
                         this.utenti = this.deserializzaObjDaJson(this.stringaJson);
 
@@ -102,6 +99,7 @@ window.onload = function() {
 
                     this.nuovoUsername = "";
                     this.nuovaPassword = "";
+
                     alert("Registrazione avvenuta con successo!");
                 } else {
                     alert("Registrazione fallita!\nSono presenti degli errori.");
