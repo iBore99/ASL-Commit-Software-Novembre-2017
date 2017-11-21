@@ -40,8 +40,11 @@
                     <input v-bind:class=" 'errore-input-' + !passwordValida " v-on:keyup="controlloPassword()" type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
                     <small>Nota: la password deve contenere almeno una maiuscola, una minuscola e un numero.</small>
 
-                    <p class="errore-dati" v-show="!usernameValido">{{messaggioErroreUsername}}</p>
-                    <p class="errore-dati" v-show="!passwordValida">Errore: Password non valida!</p>
+                    <div id="stampaErrori" v-show="!usernameValido || !passwordValida">
+                        <p class="errore-dati" v-show="!usernameValido">{{messaggioErroreUsername}}</p>
+                        <p class="errore-dati" v-show="!passwordValida">ERRORE: Password non valida!</p>
+                    </div>
+
                     <input type="submit" class="btn btn-primary" value="Registrati">
                 </form>
                 <div id="richiestaRegistrazione">
