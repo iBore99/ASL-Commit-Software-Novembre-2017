@@ -73,3 +73,7 @@ div#stampaErrori {
 #login input[type=submit] {
     margin-top: 35px;
 }
+
+#stampaErrori {
+    margin-bottom: 25px;
+}
