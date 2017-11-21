@@ -13,7 +13,7 @@
         <div id="app" :onload="inizializzaDati()">
 
             <!-- PAGINA DI LOGIN -->
-            <div id="login" v-if="controlloPulsante"> 
+            <div id="login" v-if="controlloPulsante">
                 <h1>Login</h1>
                 <form v-on:submit.prevent="confrontaCredenziali()" action="">
                     <input type="text" class="form-control" v-model="nuovoUsername" placeholder="Inserisci il tuo username o la tua email..." required/>
@@ -29,13 +29,16 @@
             <!-- PAGINA DI REGISTRAZIONE -->
             <div id="registrazione" v-else>
                 <h1>Registrazione</h1>
-                <form v-on:submit.prevent="aggiuntaUtente()" action="">   
-                    
+                <form v-on:submit.prevent="aggiuntaUtente()" action="">
+
+                    <label>Username</label>
                     <input v-bind:class=" 'errore-input-' + !usernameValido " v-on:keyup="controlloUsername()" type="text" class="form-control" v-model="nuovoUsername" placeholder="Inserisci username..." required/>
-                    <p>Nota: l'username deve contenere almeno 4 caratteri.</p>
+                    <small>Nota: l'username deve contenere almeno 4 caratteri.</small>
+                    <label>E-mail</label>
                     <input type="email" class="form-control" v-model="nuovaEmail" placeholder="Inserisci la tua email..." required/>
+                    <label>Password</label>
                     <input v-bind:class=" 'errore-input-' + !passwordValida " v-on:keyup="controlloPassword()" type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
-                    <p>Nota: la password deve contenere almeno una maiuscola, una minuscola e un numero.</p>
+                    <small>Nota: la password deve contenere almeno una maiuscola, una minuscola e un numero.</small>
 
                     <p class="errore-dati" v-show="!usernameValido">{{messaggioErroreUsername}}</p>
                     <p class="errore-dati" v-show="!passwordValida">Errore: Password non valida!</p>
