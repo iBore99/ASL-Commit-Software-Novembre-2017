@@ -11,10 +11,13 @@ window.onload = function() {
             messaggioErroreUsername: "",   //cambia in base al tipo di errore
             usernameValido: true,       
             passwordValida: true,
+            confermaPasswordValida: true,
+
 
             nuovoUsername: "",
             nuovaEmail:"",
             nuovaPassword: "",
+            confermaPassword: "",
             stringaJson: "",
             controlloPulsante: true,
 
@@ -52,6 +55,26 @@ window.onload = function() {
                     this.passwordValida = true; //Se la casella di testo è vuota, si ritorna alla condizione iniziale.
                 }
 
+            },
+
+            controlloConfermaPassword(){
+                if(this.confermaPassword)
+                {
+                    if(this.nuovaPassword == this.confermaPassword)
+                    {
+                        this.confermaPasswordValida = true;
+                    }
+                    else 
+                    { 
+                        this.confermaPasswordValida = false;
+                    }
+                }
+                else 
+                {
+                    this.confermaPasswordValida = true;
+                }
+
+                
             },
 
             controlloUsername() {   
