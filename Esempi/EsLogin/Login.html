@@ -49,9 +49,10 @@
                     <label>Data di nascita</label>
                     <input type="date" class="form-control" placeholder="seleziona la tua data di nascita" required/>              <!-- data di nascita -->
 
-                    <div id="stampaErrori" v-show="!usernameValido || !passwordValida">
+                    <div id="stampaErrori" v-show="sonoPresentiErrori()">
                         <p class="errore-dati" v-show="!usernameValido">{{messaggioErroreUsername}}</p>
                         <p class="errore-dati" v-show="!passwordValida">ERRORE: Password non valida!</p>
+                        <p class="errore-dati" v-show="!confermaPasswordValida">ERRORE: Le due password non coincidono!</p>
                     </div>
 
                     <input type="submit" class="btn btn-primary" value="Registrati">

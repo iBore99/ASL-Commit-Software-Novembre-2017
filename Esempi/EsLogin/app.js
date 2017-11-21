@@ -57,7 +57,6 @@ window.onload = function() {
 
             },
 
-<<<<<<< HEAD
             controlloConfermaPassword(){
                 if(this.confermaPassword)
                 {
@@ -78,10 +77,11 @@ window.onload = function() {
                 
             },
 
-            controlloUsername() {   
-=======
+            sonoPresentiErrori(){
+                return !(this.confermaPasswordValida && this.usernameValido && this.passwordValida);
+            },
+
             controlloUsername() {
->>>>>>> e20793c56f97666051a329b836312dcb4a8f8356
                 if (this.nuovoUsername) {
                     var usernameDisponibile = this.controlloUsernameDisponibile();
                     var usernameCorretto = this.nuovoUsername.length >= 4 && !(/[ ]/.test(this.nuovoUsername));
