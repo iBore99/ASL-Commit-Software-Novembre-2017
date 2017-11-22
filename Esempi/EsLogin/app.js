@@ -1,6 +1,5 @@
 window.onload = function() {
-    window.open('mailto:cristianborelli@hotmail.it?subject=Recupera password&body=la tua password è: [...]');
-    new Vue({
+     new Vue({
 
         el: '#app',
 
@@ -144,8 +143,8 @@ window.onload = function() {
 
             confrontaCredenziali() { //funzione chiamata nella sezione del login: fa il confronto tra le credenziali inserite e quelle registrate
                 for (var utente of this.utenti) {
-                    if ((this.nuovoUsername == utente.username || this.nuovoUsername == utente.email) && this.nuovaPassword == utente.password) {
-                        //se vengono riconosciuti sia l'username (oppure la mail)che la password, l'autenticazione viene eseguita correttamente
+                    if (this.nuovoUsername == utente.username && this.nuovaPassword == utente.password) {
+                        //se vengono riconosciuti sia l'username che la password, l'autenticazione viene eseguita correttamente
                         alert("Autenticazione avvenuta con successo.");
                         return;
                     }
