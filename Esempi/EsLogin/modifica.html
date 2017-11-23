@@ -2,7 +2,8 @@
     <head>
         <meta charset="UTF-8">
         <script src="../../vue.js"></script>
-        <script src="app2.js"></script>
+        <script src="appModifica.js"></script>
+        <script src="funzioniJsUtility.js"></script>
         <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="stile.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,12 +35,21 @@
 <!-- FINE NAVBAR -->
 
 
-<div class="container sfondoApp">
+<div class="container sfondoApp"  >
 
-
-
-
+    <div id="appModifica" :onload = "inizializzazioneDatiModifica()">
+        <h2>Modifica cliente</h2>
+       Ragione sociale:  <input type="text" v-bind:value="nuovaRagioneSociale"/>
+       Indirizzo residenza:  <input type="text" v-bind:value="nuovoIndirizzoResidenza"/>
+       Contatto telefonico: <input type="text" v-bind:value="nuovoContattoTelefonico"/> 
+    </div>
     
+
+
+
+
+
+
 </div>
 
 

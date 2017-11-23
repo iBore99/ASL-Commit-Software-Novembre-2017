@@ -12,42 +12,56 @@ window.onload = function() {
             ragioneSociale: "",
             dataRegistrazione: "",
             partitaIva: "",
+            indirizzoResidenza: "",
+            contattoTelefonico:"",
             testoCercato: "",
 
             clienti: [{
                     ragioneSociale: "pippo s.r.l",
                     dataRegistrazione: "2017-02-18",
                     partitaIva: "123456789",
+                    indirizzoResidenza: "via luciani",
+                    contattoTelefonico:"64538583",
                     daVisualizzare: true
                 },
                 {
                     ragioneSociale: "pippo2 s.r.l",
                     dataRegistrazione: "2017-02-18",
                     partitaIva: "123456789",
+                    indirizzoResidenza: "via porrini",
+                    contattoTelefonico:"576387486",
                     daVisualizzare: true
                 },
                 {
                     ragioneSociale: "pippo2 s.r.l",
                     dataRegistrazione: "2017-02-18",
                     partitaIva: "123456789",
+                    indirizzoResidenza: "via gramsci",
+                    contattoTelefonico:"86758390",
                     daVisualizzare: true
                 },
                 {
                     ragioneSociale: "pippo4 s.r.l",
                     dataRegistrazione: "2017-02-18",
                     partitaIva: "123456789",
+                    indirizzoResidenza: "via verdi",
+                    contattoTelefonico:"76845738",
                     daVisualizzare: true
                 },
                 {
                     ragioneSociale: "pippo5 s.r.l",
                     dataRegistrazione: "2017-02-18",
                     partitaIva: "123456789",
+                    indirizzoResidenza: "piazza cavour",
+                    contattoTelefonico:"7685739",
                     daVisualizzare: true
                 },
                 {
                     ragioneSociale: "pippo6 s.r.l",
                     dataRegistrazione: "2017-02-18",
                     partitaIva: "123456789",
+                    indirizzoResidenza: "via manzoni",
+                    contattoTelefonico:"7688273465",
                     daVisualizzare: true
                 }
             ]
@@ -81,52 +95,11 @@ window.onload = function() {
 
             },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             serializzaDatiClientiPerModifica(index) {
                 setObjToLocalStorage("clienti", this.clienti);
                 setObjToLocalStorage("iClienteDaModificare", index);
 
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         }
     })

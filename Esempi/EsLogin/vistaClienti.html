@@ -53,7 +53,8 @@
                     <div v-show="cliente.daVisualizzare" class=" col-xs-4" v-for="(cliente, index) in clienti">
                         <div class="liCliente" style="width: auto">
                             <p><strong>Ragione sociale: </strong> {{cliente.ragioneSociale}}</p>
-                            <p><strong>Data registrazione: </strong> {{cliente.dataRegistrazione}}</p>
+                            <p><strong>Contatto Telefonico: </strong> {{cliente.contattoTelefonico}}</p>
+                            <p><strong>Indirizzo di residenza: </strong> {{cliente.indirizzoResidenza}}</p>
                             <p><strong>Partita Iva: </strong> {{cliente.partitaIva}}</p>
                             <span class="bottoniClienti">
                                 <button @click = "serializzaDatiClientiPerModifica(index)" class="btn btn-primary">Modifica</button>
