@@ -11,6 +11,7 @@ function getJsonFromLocalStorage(nome_obj) {
 
 }
 
-function setObjToLocalStorage(nome_obj, stringaJson) {
-    localStorage.setItem(nome_obj, stringaJson);
+function setObjToLocalStorage(nome_obj, obj) {
+
+    localStorage.setItem(nome_obj, serializzaObjInJson(obj));
 }

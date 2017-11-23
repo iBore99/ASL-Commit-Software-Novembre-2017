@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="../../vue.js"></script>
+    <script src="funzioniJsUtility.js"></script>
     <script src="app2.js"></script>
     <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="stile.css" rel="stylesheet" type="text/css">
@@ -40,26 +41,31 @@
             <div class="row">
                 <div class="col-sm-4 col-sm-offset-4">
                     <h2>Ricerca</h2>
-                    <input class="form-control" type="text" placeholder="ricerca un cliente..." />
+                    <input class="form-control" @keyup=" ricercaClienti()" type="text" v-model="testoCercato" placeholder="ricerca un cliente..." />
                 </div>
             </div>
 
             <div id="listaClienti">
-                <h2>Lista dei clienti</h2>
-                <div v-show="cliente.daVisualizzare" class=" col-xs-4" v-for="(cliente, index) in clienti" v-bind:key="cliente">
-                    <div class="liCliente" style="width: auto">
-                        <p><strong>Ragione sociale: </strong> {{cliente.ragioneSociale}}</p>
-                        <p><strong>Data registrazione: </strong> {{cliente.dataRegistrazione}}</p>
-                        <p><strong>Partita Iva: </strong> {{cliente.partitaIva}}</p>
-                        <span class="bottoniClienti">
-                                <button class="btn btn-primary">Modifica</button>
+                <div v-if="clienti.length != 0 && numClientiDaVisualizzare > 0">
+                    <h2>Lista dei clienti</h2>
+
+                    <div v-show="cliente.daVisualizzare" class=" col-xs-4" v-for="(cliente, index) in clienti">
+                        <div class="liCliente" style="width: auto">
+                            <p><strong>Ragione sociale: </strong> {{cliente.ragioneSociale}}</p>
+                            <p><strong>Data registrazione: </strong> {{cliente.dataRegistrazione}}</p>
+                            <p><strong>Partita Iva: </strong> {{cliente.partitaIva}}</p>
+                            <span class="bottoniClienti">
+                                <button @click = "serializzaDatiClientiPerModifica(index)" class="btn btn-primary">Modifica</button>
                                 <button @click = "rimuoviCliente(index)" class="btn btn-danger">Elimina</button>
                             </span>
+                        </div>
                     </div>
+                </div>
+                <div v-else>
+                    <h2>Non sono presenti clienti da visualizzare.</h2>
                 </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
