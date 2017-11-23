@@ -1,12 +1,12 @@
 window.onload = function() {
-     new Vue({
+    new Vue({
 
-        el: '#app',
+        el: '#appLoginReg',
 
         data: {
 
             /*Variabili flag che mi servono per decidere cosa mostrare 
-            nella pagina in base aai dati inseriti*/
+            nella pagina in base ai dati inseriti*/
             messaggioErroreUsername: "", //cambia in base al tipo di errore
             usernameValido: true,
             passwordValida: true,
@@ -17,23 +17,27 @@ window.onload = function() {
             nuovaEmail: "",
             nuovaPassword: "",
             confermaPassword: "",
-            stringaJson: "",
+            stringaJsonUtenti: "",
             controlloPulsante: true,
 
-            utenti: []
+            utenti: [],
+
+
+
         },
 
         methods: {
 
             inizializzaDati() {
-                this.stringaJson = localStorage.getItem('utenti');
-                if (this.stringaJson)
-                    this.utenti = this.deserializzaObjDaJson(this.stringaJson);
+
+                this.stringaJsonUtenti = getJsonFromLocalStorage('utenti');
+
+                if (this.stringaJsonUtenti)
+                    this.utenti = deserializzaObjDaJson(this.stringaJsonUtenti);
             },
 
             validazioneDati() {
                 return (this.passwordValida && this.usernameValido)
-
             },
 
             controlloPassword() {
@@ -56,27 +60,21 @@ window.onload = function() {
 
             },
 
-            controlloConfermaPassword(){
-                if(this.confermaPassword)
-                {
-                    if(this.nuovaPassword == this.confermaPassword)
-                    {
+            controlloConfermaPassword() {
+                if (this.confermaPassword) {
+                    if (this.nuovaPassword == this.confermaPassword) {
                         this.confermaPasswordValida = true;
-                    }
-                    else 
-                    { 
+                    } else {
                         this.confermaPasswordValida = false;
                     }
-                }
-                else 
-                {
+                } else {
                     this.confermaPasswordValida = true;
                 }
 
-                
+
             },
 
-            sonoPresentiErrori(){
+            sonoPresentiErrori() {
                 return !(this.confermaPasswordValida && this.usernameValido && this.passwordValida);
             },
 
@@ -111,8 +109,8 @@ window.onload = function() {
             aggiuntaUtente() { //metodo per la registrazione di un nuovo utente
 
                 if (this.validazioneDati()) { //se questo controllo fallisce sicuramente ci sono degli errori nella registrazione
-                    if (this.stringaJson)
-                        this.utenti = this.deserializzaObjDaJson(this.stringaJson);
+                    if (this.stringaJsonUtenti)
+                        this.utenti = this.deserializzaObjDaJson(this.stringaJsonUtenti);
 
                     this.utenti.push({
                         username: this.nuovoUsername,
@@ -121,8 +119,8 @@ window.onload = function() {
                     });
 
 
-                    this.stringaJson = this.serializzaObjInJson(this.utenti);
-                    localStorage.setItem("utenti", this.stringaJson);
+                    this.stringaJsonUtenti = this.serializzaObjInJson(this.utenti);
+                    localStorage.setItem("utenti", this.stringaJsonUtenti);
 
                     this.nuovoUsername = "";
                     this.nuovaEmail = "";
@@ -151,18 +149,7 @@ window.onload = function() {
                 }
 
                 alert("Autenticazione fallita!");
-            },
-
-
-
-            serializzaObjInJson(obj) { //creazione stringa json
-                return JSON.stringify(obj);
-            },
-
-            deserializzaObjDaJson(stringa_json) { //ricavo oggetto da stringa json
-                return eval(stringa_json);
             }
-
         }
 
     })

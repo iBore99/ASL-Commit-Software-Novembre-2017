@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <script src="../../vue.js"></script>
     <script src="app.js"></script>
+    <script src="funzioniJsUtility.js"></script>
     <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="stile.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <div class="container">
-        <div id="app" :onload="inizializzaDati()">
+        <div id="appLoginReg" :onload="inizializzaDati()">
 
             <!-- PAGINA DI LOGIN -->
             <div id="login" v-if="controlloPulsante">
@@ -30,8 +31,8 @@
             <div id="registrazione" v-else>
                 <h1>Registrazione</h1>
                 <form v-on:submit.prevent="aggiuntaUtente()" action="">
-                    
-                    
+
+
                     <label>Username</label>
                     <input v-bind:class=" 'errore-input-' + !usernameValido " v-on:keyup="controlloUsername()" type="text" class="form-control" v-model="nuovoUsername" placeholder="Inserisci username..." required/>
                     <small>Nota: l'username deve contenere almeno 4 caratteri.</small>
@@ -40,14 +41,15 @@
                     <label>Password</label>
                     <input v-bind:class=" 'errore-input-' + !passwordValida " v-on:keyup="controlloPassword()" type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
                     <small>Nota: la password deve contenere almeno una maiuscola, una minuscola e un numero.</small>
-                    
-                    <span v-show = "nuovaPassword.length > 1 && passwordValida" >
+
+                    <span v-show="nuovaPassword.length > 1 && passwordValida">
                         <label >Conferma password</label>
                         <input  v-bind:class=" 'errore-input-' + !confermaPasswordValida " v-on:keyup="controlloConfermaPassword()" type="password" class="form-control" v-model="confermaPassword" placeholder="Inserisci nuovamente la password..." required/>
                     </span>
-                    
+
                     <label>Data di nascita</label>
-                    <input type="date" class="form-control" placeholder="seleziona la tua data di nascita" required/>              <!-- data di nascita -->
+                    <input type="date" class="form-control" placeholder="seleziona la tua data di nascita" required/>
+                    <!-- data di nascita -->
 
                     <div id="stampaErrori" v-show="sonoPresentiErrori()">
                         <p class="errore-dati" v-show="!usernameValido">{{messaggioErroreUsername}}</p>

@@ -1,4 +1,4 @@
-#app div {
+#appLoginReg div {
     text-align: center;
     display: block;
     margin: 0 auto;
@@ -78,3 +78,63 @@ div#stampaErrori {
     margin-bottom: 25px;
 }
 
+div#listaClienti {
+    margin-top: 60px
+}
+
+div#listaClienti h2 {
+    margin-bottom: 40px
+}
+
+.liCliente {
+    display: block !important;
+    background-color: white;
+    padding: 10px;
+    border-radius: 25px;
+    display: inline-block;
+    border: 2px solid darkgray;
+    margin: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.liCliente .btn {
+    padding: 1px 8px;
+}
+
+.bottoniClienti {
+    margin-left: 160px
+}
+
+.sfondoApp {
+    box-shadow: 0px 0px 7px black;
+    background-color: #efefef;
+    margin-bottom: 30px;
+}
+
+#appInterna label {
+    font-size: 20px
+}
+
+#appInterna h2 {
+    text-align: center;
+    /* margin-bottom: 40px; */
+}
+
+div#sezRicerca {
+    margin-top: 60px
+}
+
+#sezRicerca label {
+    display: block;
+    margin-bottom: 20px;
+    text-align: center
+}
+
+body.sfondoBody {
+    background-color: grey;
+}
+
+.container-fluid {
+    box-shadow: 1px 5px 22px #9d9d9d;
+}

@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script src="componentFoo.js"></script>
+    <script src="app.js"></script>
+    <script src="pagModifica.html"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1>TITOLO + navbar</h1>
+
+        <router-link to="/foo">vai alla pagina FOO</router-link>
+        <router-link to="/modifica">vai alla pagina modifica</router-link>
+
+        <router-link to="/nuovoCliente">vai alla pagina di creazione nuovo utente</router-link>
+
+        <router-view></router-view>
+    </div>
+</body>
+
+</html
