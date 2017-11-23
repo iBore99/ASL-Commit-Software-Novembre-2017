@@ -142,3 +142,18 @@ body.sfondoBody {
 .form-control{
     margin-bottom: 10px;
 }
+
+#btnSalva{
+    margin-top: 25px;
+    float: right;
+}
+
+#btnRipristina{
+    margin-top: 25px;
+    float: left;
+}
+
+#appModifica h1{
+    text-align: center;
+    margin-bottom: 60px;
+}

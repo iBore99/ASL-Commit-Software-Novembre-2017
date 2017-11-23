@@ -38,11 +38,19 @@
 <div class="container sfondoApp"  >
 
     <div id="appModifica" :onload = "inizializzazioneDatiModifica()">
-        <h2>Modifica cliente</h2>
-       Ragione sociale:  <input type="text" v-bind:value="nuovaRagioneSociale"/>
-       Indirizzo residenza:  <input type="text" v-bind:value="nuovoIndirizzoResidenza"/>
-       Contatto telefonico: <input type="text" v-bind:value="nuovoContattoTelefonico"/> 
-    </div>
+            <h1>Modifica cliente</h1>
+        <form action="" v-on:submit.prevent="effettuaModifica()">
+            <label>Ragione sociale</label>
+            <input type="text" class="form-control" value = "nuovaRagioneSociale" v-model = "nuovaRagioneSociale"/>
+            <label>Indirizzo di residenza</label>
+            <input type="text" class="form-control" value = "" v-model= "nuovoIndirizzoResidenza"/>
+            <label>Contatto telefonico</label>
+            <input type="text" class="form-control" v-model="nuovoContattoTelefonico"/>
+            <input id = "btnRipristina" @click = "ripristinaForm()" type="button" class="btn btn-default" value="Ripristina">
+            <input :disabled = "!giaEntrato" id = "btnSalva"type="submit" class="btn btn-primary" value="Salva">
+        </form>
+        
+      </div>
     
 
 
