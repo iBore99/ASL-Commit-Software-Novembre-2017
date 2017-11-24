@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="../../vue.js"></script>
-    <script src="appModifica.js"></script>
+    <script src="appAggiuntaCliente.js"></script>
     <script src="funzioniJsUtility.js"></script>
     <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="stile.css" rel="stylesheet" type="text/css">
@@ -37,47 +37,29 @@
 
     <div class="container sfondoApp">
 
-        <div id="appModifica" :onload="inizializzazioneDatiModifica()">
-            <h1>Modifica cliente</h1>
-            <form action="" v-on:submit.prevent="effettuaModifica()">
-                <label>Ragione sociale</label>
-                <input type="text" class="form-control" value="nuovaRagioneSociale" v-model="nuovaRagioneSociale" />
-                <label>Indirizzo di residenza</label>
-                <input type="text" class="form-control" value="" v-model="nuovoIndirizzoResidenza" />
-                <label>Contatto telefonico</label>
-                <input type="text" class="form-control" v-model="nuovoContattoTelefonico" />
-                <label>Settore</label>
-                <input type="text" class="form-control" v-model="nuovoSettore" />
-                <label>Indirizzo mail</label>
-                <input type="text" class="form-control" v-model="nuovoIndirizzoMail" />
+        <div id="appAggiuntaCliente" :onload="inizializzazioneDatiAggiuntaCliente()">
+            <h1>Aggiunta nuovo cliente</h1>
 
-                <input id="btnRipristina" @click="ripristinaForm()" type="button" class="btn btn-default" value="Ripristina">
-                <input :disabled="disabilitaSalva" id="btnSalva" type="submit" class="btn btn-primary" value="Salva">
+            <form v-on:submit.prevent="aggiungiCliente()">
+                <label>Ragione sociale:</label>
+                <input class="form-control" type="text" v-model="nuovaRagioneSociale" required/>
+                <label>Indirizzo residenza: </label>
+                <input class="form-control" type="text" v-model="nuovoIndirizzoResidenza" required/>
+                <label>Contatto telefonico: </label>
+                <input class="form-control" type="text" v-model="nuovoContattoTelefonico" required/>
+                <label>Partita iva: </label>
+                <input class="form-control" type="text" v-model="nuovaPartitaIva" required/>
+                <label>Settore: </label>
+                <input class="form-control" type="text" v-model="nuovoSettore" required/>
+                <label>Indirizzo Mail: </label>
+                <input class="form-control" type="email" v-model="nuovoIndirizzoMail" required/>
+
+                <input @click="ripristinaForm()" type="button" class="btn btn-default" value="Ripristina">
+                <input :disabled="disabilitaAggiungi" class="btn btn-primary" type="submit" value="Aggiungi cliente">
             </form>
-
         </div>
 
-
-
-
-
-
-
     </div>
-
-
-
-
-
-
-
-
-
-
 </body>
-
-
-
-
 
 </html>

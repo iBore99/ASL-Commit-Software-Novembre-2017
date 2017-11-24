@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="../../vue.js"></script>
-    <script src="app.js"></script>
+    <script src="appLoginReg.js"></script>
     <script src="funzioniJsUtility.js"></script>
     <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="stile.css" rel="stylesheet" type="text/css">
@@ -42,14 +42,10 @@
                     <input v-bind:class=" 'errore-input-' + !passwordValida " v-on:keyup="controlloPassword()" type="password" class="form-control" v-model="nuovaPassword" placeholder="Inserisci la tua password..." required/>
                     <small>Nota: la password deve contenere almeno una maiuscola, una minuscola e un numero.</small>
 
-                    <span v-show="nuovaPassword.length > 1 && passwordValida">
+                    <span v-show="nuovaPassword.length > 6 && passwordValida">
                         <label >Conferma password</label>
                         <input  v-bind:class=" 'errore-input-' + !confermaPasswordValida " v-on:keyup="controlloConfermaPassword()" type="password" class="form-control" v-model="confermaPassword" placeholder="Inserisci nuovamente la password..." required/>
                     </span>
-
-                    <label>Data di nascita</label>
-                    <input type="date" class="form-control" placeholder="seleziona la tua data di nascita" required/>
-                    <!-- data di nascita -->
 
                     <div id="stampaErrori" v-show="sonoPresentiErrori()">
                         <p class="errore-dati" v-show="!usernameValido">{{messaggioErroreUsername}}</p>
@@ -57,7 +53,7 @@
                         <p class="errore-dati" v-show="!confermaPasswordValida">ERRORE: Le due password non coincidono!</p>
                     </div>
 
-                    <input type="submit" class="btn btn-primary" value="Registrati">
+                    <input :disabled="disabilitaRegistrati" type="submit" class="btn btn-primary" value="Registrati">
                 </form>
                 <div id="richiestaRegistrazione">
                     <p>Sei già registrato?</p>

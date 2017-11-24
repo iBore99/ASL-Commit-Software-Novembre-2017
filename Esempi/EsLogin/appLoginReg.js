@@ -4,7 +4,7 @@ window.onload = function() {
         el: '#appLoginReg',
 
         data: {
-
+            disabilitaRegistrati: true,
             /*Variabili flag che mi servono per decidere cosa mostrare 
             nella pagina in base ai dati inseriti*/
             messaggioErroreUsername: "", //cambia in base al tipo di errore
@@ -21,9 +21,6 @@ window.onload = function() {
             controlloPulsante: true,
 
             utenti: [],
-
-
-
         },
 
         methods: {
@@ -75,7 +72,17 @@ window.onload = function() {
             },
 
             sonoPresentiErrori() {
-                return !(this.confermaPasswordValida && this.usernameValido && this.passwordValida);
+
+                if (!(this.nuovaEmail && this.nuovaPassword && this.nuovoUsername && this.confermaPassword) ||
+                    !(this.confermaPasswordValida && this.usernameValido && this.passwordValida)) {
+                    this.disabilitaRegistrati = true;
+                    return false;
+                } else {
+                    this.disabilitaRegistrati = false;
+                    return true;
+                }
+
+
             },
 
             controlloUsername() {
@@ -108,28 +115,24 @@ window.onload = function() {
 
             aggiuntaUtente() { //metodo per la registrazione di un nuovo utente
 
-                if (this.validazioneDati()) { //se questo controllo fallisce sicuramente ci sono degli errori nella registrazione
-                    if (this.stringaJsonUtenti)
-                        this.utenti = this.deserializzaObjDaJson(this.stringaJsonUtenti);
+                if (this.stringaJsonUtenti)
+                    this.utenti = deserializzaObjDaJson(this.stringaJsonUtenti);
 
-                    this.utenti.push({
-                        username: this.nuovoUsername,
-                        email: this.nuovaEmail,
-                        password: this.nuovaPassword
-                    });
+                this.utenti.push({
+                    username: this.nuovoUsername,
+                    email: this.nuovaEmail,
+                    password: this.nuovaPassword
+                });
 
 
-                    this.stringaJsonUtenti = this.serializzaObjInJson(this.utenti);
-                    localStorage.setItem("utenti", this.stringaJsonUtenti);
+                this.stringaJsonUtenti = serializzaObjInJson(this.utenti);
+                localStorage.setItem("utenti", this.stringaJsonUtenti);
 
-                    this.nuovoUsername = "";
-                    this.nuovaEmail = "";
-                    this.nuovaPassword = "";
-                    alert("Registrazione avvenuta con successo!");
+                this.nuovoUsername = "";
+                this.nuovaEmail = "";
+                this.nuovaPassword = "";
+                alert("Registrazione avvenuta con successo!");
 
-                } else {
-                    alert("Registrazione fallita!\nSono presenti degli errori.");
-                }
             },
 
             cambiaStato() {

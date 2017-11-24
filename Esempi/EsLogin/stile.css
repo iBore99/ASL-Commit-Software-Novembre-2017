@@ -4,16 +4,31 @@
     margin: 0 auto;
 }
 
-.container {
+div#login,
+div#registrazione {
+    width: 500px;
+    box-shadow: 0px 0px 7px black;
+    background-color: #efefef;
     margin-top: 30px;
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: rgb(217, 227, 245);
     border-radius: 30px;
+}
+
+body {
+    background-color: grey
+}
+
+div#registrazione {
+    width: 700px;
 }
 
 div#richiestaRegistrazione {
     margin-top: 50px;
+}
+
+.container {
+    border-radius: 15px
 }
 
 input {
@@ -87,6 +102,9 @@ div#listaClienti h2 {
 }
 
 .liCliente {
+    cursor: pointer;
+    overflow: auto;
+    max-width: 330px;
     display: block !important;
     background-color: white;
     padding: 10px;
@@ -103,6 +121,7 @@ div#listaClienti h2 {
 }
 
 .bottoniClienti {
+    margin-top: 30px;
     margin-left: 160px
 }
 
@@ -110,6 +129,7 @@ div#listaClienti h2 {
     box-shadow: 0px 0px 7px black;
     background-color: #efefef;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 #appInterna label {
@@ -118,7 +138,6 @@ div#listaClienti h2 {
 
 #appInterna h2 {
     text-align: center;
-    /* margin-bottom: 40px; */
 }
 
 div#sezRicerca {
@@ -139,21 +158,53 @@ body.sfondoBody {
     box-shadow: 1px 5px 22px #9d9d9d;
 }
 
-.form-control{
+.form-control {
     margin-bottom: 10px;
 }
 
-#btnSalva{
+#btnSalva {
     margin-top: 25px;
     float: right;
 }
 
-#btnRipristina{
+#btnRipristina {
     margin-top: 25px;
     float: left;
 }
 
-#appModifica h1{
+#appModifica h1 {
     text-align: center;
     margin-bottom: 60px;
+}
+
+div#appModifica {
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+div.clienteEspanso-true {
+    word-wrap: break-word;
+    max-width: 330px;
+    width: 500px;
+    height: auto;
+    overflow: auto;
+}
+
+div#appAggiuntaCliente {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+#appAggiuntaCliente h1 {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+#appAggiuntaCliente input[type=submit] {
+    float: right;
+    margin-bottom: 30px;
+}
+
+#appAggiuntaCliente input[type=button] {
+    margin-top: 30px;
 }
