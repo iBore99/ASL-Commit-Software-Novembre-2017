@@ -8,7 +8,7 @@ div#login,
 div#registrazione {
     width: 500px;
     box-shadow: 0px 0px 7px black;
-    background-color: #efefef;
+    background-color: #efefefd1;
     margin-top: 30px;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -16,7 +16,12 @@ div#registrazione {
 }
 
 body {
-    background-color: grey
+    background: url(http://www.worldofstones.com/blog/wp-content/uploads/2017/09/nero-marquinia.jpg) center center;
+     -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+    
 }
 
 div#registrazione {
@@ -106,7 +111,7 @@ div#listaClienti h2 {
     overflow: auto;
     max-width: 330px;
     display: block !important;
-    background-color: white;
+    background-color: #ffffffd6;
     padding: 10px;
     border-radius: 25px;
     display: inline-block;
@@ -126,10 +131,12 @@ div#listaClienti h2 {
 }
 
 .sfondoApp {
-    box-shadow: 0px 0px 7px black;
-    background-color: #efefef;
-    margin-bottom: 30px;
-    margin-top: 30px;
+    box-shadow: 0px 0px 15px grey;
+    background-color: #efefefd1;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    padding-bottom: 30px;
+
 }
 
 #appInterna label {
