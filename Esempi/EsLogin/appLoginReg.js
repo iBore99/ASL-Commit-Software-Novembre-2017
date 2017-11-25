@@ -4,6 +4,8 @@ window.onload = function() {
         el: '#appLoginReg',
 
         data: {
+            linkVistaClienti: "",
+
             disabilitaRegistrati: true,
             /*Variabili flag che mi servono per decidere cosa mostrare 
             nella pagina in base ai dati inseriti*/
@@ -147,6 +149,7 @@ window.onload = function() {
                     if (this.nuovoUsername == utente.username && this.nuovaPassword == utente.password) {
                         //se vengono riconosciuti sia l'username che la password, l'autenticazione viene eseguita correttamente
                         alert("Autenticazione avvenuta con successo.");
+                        cambioURLCorrente('vistaClienti.html');
                         return;
                     }
                 }

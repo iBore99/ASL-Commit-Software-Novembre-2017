@@ -64,8 +64,11 @@ window.onload = function() {
 
             serializzaDatiClientiPerModifica(index) {
 
+
                 setObjToLocalStorage("clienti", this.clienti);
                 setObjToLocalStorage("iClienteDaModificare", index);
+
+                cambioURLCorrente('modifica.html');
 
             }
 

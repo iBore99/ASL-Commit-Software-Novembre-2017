@@ -15,3 +15,8 @@ function setObjToLocalStorage(nome_obj, obj) {
 
     localStorage.setItem(nome_obj, serializzaObjInJson(obj));
 }
+
+
+function cambioURLCorrente(nuovoLink) {
+    window.location.href = nuovoLink;
+}
